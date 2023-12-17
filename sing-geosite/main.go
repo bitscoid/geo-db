@@ -252,7 +252,7 @@ func release(source string, destination string, output string, ruleSetOutput str
 }
 
 func main() {
-	err := release("bitscoid/geo-dat", "bitscoid/geosite", "geosite.db", "rule-set-geosite")
+	err := release("bitscoid/geo-dat", "bitscoid/sing-geosite", "geosite.db", "rule-set-geosite")
 	if err != nil {
 		log.Fatal(err)
 	}
