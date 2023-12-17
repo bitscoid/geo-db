@@ -238,7 +238,7 @@ func setActionOutput(name string, content string) {
 }
 
 func main() {
-	err := release("malikshi/geoip", "malikshi/sing-geoip", "geoip.db", "rule-set-geoip")
+	err := release("bitscoid/geoip", "bitscoid/geoip", "geoip.db", "rule-set-geoip")
 	if err != nil {
 		log.Fatal(err)
 	}
