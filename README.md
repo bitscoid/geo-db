@@ -4,8 +4,8 @@ Generate custom geosite and geoip based on [Loyalsoldier](https://github.com/Loy
 
 ## DOWNLOAD 
 
-  - [GEOSITE](https://github.com/malikshi/sing-box-geo/releases/latest/download/geosite.db)
-  - [GEOIP](https://github.com/malikshi/sing-box-geo/releases/latest/download/geoip.db)
+  - [GEOSITE](https://github.com/bitscoid/geo-db/releases/latest/download/geosite.db)
+  - [GEOIP](https://github.com/bitscoid/geo-db/releases/latest/download/geoip.db)
  
 
 ## GEOSITE.DB
