@@ -65,6 +65,14 @@ jobs:
         id: time
         run: echo "::set-output name=time::$(date +'%Y%m%d%H%M%S')"
 
+      - name: Delete Old Release
+        uses: dev-drprasad/delete-older-releases@v0.2.1
+        with:
+          repo: ${{ github.repository }}
+          keep_latest: 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Create a release
         id: create_release
         uses: actions/create-release@v1
@@ -146,14 +154,6 @@ jobs:
           asset_path: ./sing-geoip/geoip.db
           asset_name: geoip.db
           asset_content_type: application/octet-stream
-
-      - name: Delete Old Release
-        uses: dev-drprasad/delete-older-releases@v0.2.1
-        with:
-          repo: ${{ github.repository }}
-          keep_latest: 2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Purge rule-set-geosite jsdelivr CDN
         run: |
