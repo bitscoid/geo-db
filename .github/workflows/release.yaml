@@ -71,6 +71,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tag_name: ${{ steps.time.outputs.time }}
+          release_name: ${{ steps.time.outputs.time }}
+          draft: false
+          prerelease: false
+          
+      - name: BITS release
+        id: bits_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
           tag_name: bits
           release_name: bits
           draft: false
@@ -116,11 +127,31 @@ jobs:
           asset_name: geoip.db.sha256sum
           asset_content_type: application/octet-stream
 
+      - name: Release geosite.db
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.bits_release.outputs.upload_url }}
+          asset_path: ./sing-geosite/geosite.db
+          asset_name: geosite.db
+          asset_content_type: application/octet-stream
+          
+      - name: Release geoip.db
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.bits_release.outputs.upload_url }}
+          asset_path: ./sing-geoip/geoip.db
+          asset_name: geoip.db
+          asset_content_type: application/octet-stream
+
       - name: Delete Old Release
         uses: dev-drprasad/delete-older-releases@v0.2.1
         with:
           repo: ${{ github.repository }}
-          keep_latest: 1
+          keep_latest: 2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
