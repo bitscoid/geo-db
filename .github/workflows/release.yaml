@@ -71,8 +71,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.time.outputs.time }}
-          release_name: ${{ steps.time.outputs.time }}
+          tag_name: bits
+          release_name: bits
           draft: false
           prerelease: false
 
@@ -119,7 +119,7 @@ jobs:
       - name: Delete Old Release
         uses: dev-drprasad/delete-older-releases@v0.2.1
         with:
-          repo: malikshi/sing-box-geo
+          repo: ${{ github.repository }}
           keep_latest: 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
